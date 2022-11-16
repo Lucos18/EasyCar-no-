@@ -17,13 +17,17 @@ class ForageableListAdapter(
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(car: Car) {
-            binding.Car = car
+            binding.carBrandNameCard.text = car.brand
+            binding.carModelNameCard.text = car.model
+            //TODO add image implementation
+            binding.carYearStartProductionCard.text = car.yearStartProduction.toString()
+            binding.carFuelTypeCard.text = car.fuelType
             binding.executePendingBindings()
         }
     }
     companion object DiffCallback: DiffUtil.ItemCallback<Car>() {
         override fun areItemsTheSame(oldItem: Car, newItem: Car): Boolean {
-            return oldItem.licencePlate == newItem.licencePlate
+            return oldItem.id == newItem.id
         }
 
         override fun areContentsTheSame(oldItem: Car, newItem: Car): Boolean {

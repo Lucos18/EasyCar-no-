@@ -2,7 +2,9 @@ package com.example.easycar
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.easycar.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -13,5 +15,9 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(R.layout.activity_main)
+
+        val navController = findNavController(R.id.nav_host_fragment_content_main)
+        appBarConfiguration = AppBarConfiguration(navController.graph)
+        setupActionBarWithNavController(navController, appBarConfiguration)
     }
 }

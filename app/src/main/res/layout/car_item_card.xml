@@ -11,7 +11,7 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
+            android:layout_margin="8dp"
             app:cardBackgroundColor="@color/white"
             app:cardElevation="10dp"
             app:cardMaxElevation="12dp"
@@ -23,20 +23,31 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart=""
-                android:layout_marginEnd="">
+                android:layout_marginStart="@dimen/card_margin"
+                android:layout_marginEnd="@dimen/card_margin">
 
                 <TextView
-                    android:id="@+id/car_title_card"
-                    android:layout_width="match_parent"
+                    android:id="@+id/car_brand_name_card"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/car_title_margin"
                     android:paddingBottom="8dp"
-                    android:layout_marginTop="@dimen/car_title_margin"
-                    android:layout_marginEnd="@dimen/car_title_margin"
-                    android:text="Model car"
+                    android:layout_marginTop="@dimen/card_margin"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Brand car">
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/car_model_name_card"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="@dimen/card_margin"
+                    app:layout_constraintStart_toEndOf="@id/car_brand_name_card"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Model car">
 
                 </TextView>
 
@@ -45,12 +56,10 @@
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:scaleType="centerCrop"
-                    android:padding="16dp"
                     app:layout_constraintDimensionRatio="H,16:9"
-                    app:layout_constraintEnd_toEndOf="car_title_card"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@id/car_title_card"
-                    app:layout_constraintTop_toBottomOf="@+id/car_title_card"
+                    app:layout_constraintTop_toBottomOf="@id/car_brand_name_card"
+                    app:layout_constraintStart_toStartOf="@id/car_brand_name_card"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintVertical_chainStyle="packed"
                     android:src="@drawable/car_drawable">
 
@@ -60,8 +69,20 @@
                     android:id="@+id/car_year_start_production_card"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="year production"
-                    app:layout_constraintTop_toBottomOf="@id/car_image_card">
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintTop_toBottomOf="@id/car_image_card"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:text="Year Production">
+
+                </TextView>
+                <TextView
+                    android:id="@+id/car_fuel_type_card"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintTop_toBottomOf="@id/car_year_start_production_card"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:text="Engine Type">
 
                 </TextView>
             </androidx.constraintlayout.widget.ConstraintLayout>
