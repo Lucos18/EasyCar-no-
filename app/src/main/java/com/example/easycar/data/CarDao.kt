@@ -6,10 +6,10 @@ import kotlinx.coroutines.flow.Flow
 
 interface CarDao {
     @Query("SELECT * FROM Car")
-    fun getForageables(): Flow<List<Car>>
+    fun getCars(): Flow<List<Car>>
 
-    @Query("SELECT * FROM Car WHERE licencePlate = :licencePlate")
-    fun getForageable(licencePlate: Long): Flow<Car>
+    @Query("SELECT * FROM Car WHERE id = :id")
+    fun getCarById(id: Long): Flow<Car>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(Car: Car)
