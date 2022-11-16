@@ -8,9 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.easycar.databinding.CarItemCardBinding
 import com.example.easycar.model.Car
 
-class ForageableListAdapter(
+class CarListAdapter(
     private val clickListener: (Car) -> Unit
-) : ListAdapter<Car, ForageableListAdapter.CarViewHolder>(DiffCallback) {
+) : ListAdapter<Car, CarListAdapter.CarViewHolder>(DiffCallback) {
 
     class CarViewHolder(
         private var binding: CarItemCardBinding
