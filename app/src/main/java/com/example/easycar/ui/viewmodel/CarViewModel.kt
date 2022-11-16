@@ -1,5 +1,6 @@
 package com.example.easycar.ui.viewmodel
 
+import android.provider.SyncStateContract.Helpers.insert
 import androidx.lifecycle.*
 import com.example.easycar.data.CarDao
 import com.example.easycar.model.Car
@@ -17,7 +18,28 @@ class CarViewModel(
     }
 
     //TODO add Function to add new car if needed
+    fun addCar(
+        Brand: String,
+        Model: String,
+        YearStartProduction: Int,
+        YearEndProduction: Int,
+        Seats: Int,
+        FuelType: String
+    ) {
+        val car = Car(
+            brand = Brand,
+            model = Model,
+            yearStartProduction = YearStartProduction,
+            yearEndProduction = YearEndProduction,
+            seats = Seats,
+            fuelType = FuelType
+        )
 
+        // TODO: launch a coroutine and call the DAO method to add a Forageable to the database within it
+        viewModelScope.launch {
+            CarDao.insert(car)
+        }
+    }
     //TODO add Function to update new car if needed
 
     fun deleteCar(car: Car) {
@@ -28,9 +50,9 @@ class CarViewModel(
 }
 class CarViewModelFactory(private val CarDao: CarDao) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(CarViewModelFactory::class.java)) {
+        if (modelClass.isAssignableFrom(CarViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
-            return CarViewModelFactory(CarDao) as T
+            return CarViewModel(CarDao) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

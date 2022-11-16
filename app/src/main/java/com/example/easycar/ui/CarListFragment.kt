@@ -1,17 +1,20 @@
 package com.example.easycar.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.easycar.BaseApplication
+import com.example.easycar.R
 import com.example.easycar.databinding.FragmentCarListBinding
 import com.example.easycar.ui.adapter.CarListAdapter
 import com.example.easycar.ui.viewmodel.CarViewModel
 import com.example.easycar.ui.viewmodel.CarViewModelFactory
+
 
 class CarListFragment : Fragment() {
 
@@ -32,21 +35,21 @@ class CarListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+
         _binding = FragmentCarListBinding.inflate(inflater, container, false)
         return binding.root
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        viewModel.addCar("s", "s", 2022, 2022,2,"diesel")
         super.onViewCreated(view, savedInstanceState)
-
         //TODO check if carlistadapter crashes everything
-        /*
+/*
         val adapter = CarListAdapter { car ->
-            val action = CarListFragment
-                .actionForageableListFragmentToForageableDetailFragment(car.id)
+            val action = CarListFragmentDirections
+                .actionCarListFragmentToPlaceholder()
             findNavController().navigate(action)
         }
-        */
-        /*
+
         viewModel.allCars.observe(this.viewLifecycleOwner) { carSelected ->
             carSelected.let {
                 adapter.submitList(it)
@@ -55,6 +58,6 @@ class CarListFragment : Fragment() {
         binding.apply {
             carRecyclerViewList.adapter = adapter
         }
-        */
+*/
     }
 }
